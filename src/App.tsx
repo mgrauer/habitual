@@ -3,8 +3,10 @@ import CalendarHeatmap from 'react-calendar-heatmap';
 import 'react-calendar-heatmap/dist/styles.css';
 import './App.css';
 
+
 function App() {
-  // Sample data for the heatmap
+
+    // Sample data for the heatmap
   const values = [
     { date: '2024-01-01', count: 1 },
     { date: '2024-01-15', count: 3 },
@@ -32,4 +34,4 @@ function App() {
   );
 }
 
-export default App; 
+export default App;
