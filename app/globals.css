@@ -21,6 +21,9 @@ body {
   background: linear-gradient(to bottom, transparent, rgb(var(--background-end-rgb))) rgb(var(--background-start-rgb));
 }
 
+.react-calendar-heatmap .color-empty {
+  fill: #ebedf0;
+}
 .react-calendar-heatmap .color-scale-1 {
   fill: #d6e685;
 }
@@ -33,3 +36,4 @@ body {
 .react-calendar-heatmap .color-scale-4 {
   fill: #1e6823;
 }
+
