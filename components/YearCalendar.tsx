@@ -21,11 +21,8 @@ interface YearCalendarProps {
 }
 
 const getColorForActivity = (count: number): string => {
-  if (count === 0) return "bg-gray-100"
-  if (count < 5) return "bg-green-200"
-  if (count < 10) return "bg-green-300"
-  if (count < 15) return "bg-green-400"
-  return "bg-green-500"
+   if (count === 0) return "bg-zinc-500"
+   else return "bg-green-500"
 }
 
 export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, displayedDayLabels }) => {
@@ -59,7 +56,7 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
               </div>
             ))}
           </div>
-          <div className="grid grid-flow-col gap-[2px]">
+          <div className="grid grid-flow-col gap-[3px]">
             {weeks.map((week) => {
               const days = eachDayOfInterval({
                 start: startOfWeek(week, { weekStartsOn: 1 }),
@@ -67,7 +64,7 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
               })
 
               return (
-                <div key={format(week, "yyyy-MM-dd")} className="grid grid-rows-7 gap-[2px]">
+                <div key={format(week, "yyyy-MM-dd")} className="grid grid-rows-7 gap-[3px]">
                   {days.map((day) => {
                     const dateString = format(day, "yyyy-MM-dd")
                     const activityCount = activityData[dateString] || 0
