@@ -6,6 +6,7 @@ import {
   endOfYear,
   startOfWeek,
   endOfWeek,
+  getMonth,
   format,
   getDay,
 } from "date-fns"
@@ -36,6 +37,21 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
 
   const allDayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
+  var nextMonth = 1
+
+  // This next bit finds the first week column that contains each month
+  // so we can know where to display the month name.
+  {weeks.map((week, index) => {
+    const monthAtEndWeek = getMonth(endOfWeek(week, { weekStartsOn: 1 })) + 1;
+    console.log(index)
+    // console.log(monthAtEndWeek)
+    if (monthAtEndWeek == nextMonth) {
+        console.log(monthNames[nextMonth - 1]);
+        // console.log("found the month at week index " + index)   
+        nextMonth += 1
+    }
+  })}
+
 
   return (
     <div className="year-calendar">
@@ -62,6 +78,8 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
                 start: startOfWeek(week, { weekStartsOn: 1 }),
                 end: endOfWeek(week, { weekStartsOn: 1 }),
               })
+            //   console.log(endOfWeek(week, { weekStartsOn: 1 }))
+            //   console.log(getMonth(endOfWeek(week, { weekStartsOn: 1 })) + 1);
 
               return (
                 <div key={format(week, "yyyy-MM-dd")} className="grid grid-rows-7 gap-[3px]">
