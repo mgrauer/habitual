@@ -37,14 +37,14 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
     { weekStartsOn: 1 }, // Start weeks on Monday
   )
 
-  const allDayNames = ["Mon", "Tue", "Wed", "Thu", "Fri", "Sat", "Sun"] as const
+  const allDayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
 
   return (
     <div className="year-calendar">
       <h2 className="text-2xl font-bold mb-4">{year}</h2>
       <div className="flex flex-col">
-        <div className="flex ml-8">
+        <div className="flex ml-9">
           {monthNames.map((month, index) => (
             <div key={month} className="flex-1 text-xs text-gray-400">
               {month}
@@ -52,7 +52,7 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
           ))}
         </div>
         <div className="flex">
-          <div className="flex flex-col mr-2 text-xs text-gray-400 items-end">
+          <div className="flex flex-col mr-2 text-xs text-gray-400 items-end gap-[2px]">
             {allDayNames.map((day) => (
               <div key={day} className="h-[10px] leading-[10px]">
                 {displayedDayLabels.includes(day) ? day : ""}
