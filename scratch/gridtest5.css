@@ -1,0 +1,145 @@
+parent {
+    display: grid;
+    grid-template-columns: 3fr 53fr;
+    grid-template-rows: 1fr 7fr;
+    grid-template-areas:
+      'empty months'
+      'days calendar';
+      --padding: 4px;
+    position: relative;
+    padding: var(--padding);
+    border: 1px solid hsl(210deg 10% 40%);
+    border-radius: 8px;
+    gap: 8px;
+    height: 100vh;
+    height: 100svh;
+  }
+  .empty {
+    grid-area: empty;
+      display: grid;
+    place-content: center;
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 3px;
+    background: hsl(0deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+  }
+  
+  
+  
+  .months {
+    grid-area: months;
+    display: grid;
+    grid-template-columns: repeat(53, 1fr);
+    place-content: center;
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 3px;
+    background: hsl(045deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+  }
+  
+  .month_jan {
+    grid-column: 1 / 6;
+  }
+  
+  .month_feb {
+    grid-column: 6 / 10;
+  }
+  
+  .days {
+    grid-area: days;
+    display: grid;
+    gap: 2px;
+  
+    grid-template-rows: repeat(7, 1fr);
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 3px;
+    background: hsl(130deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+  }
+  
+  .dayweek {
+    place-content: center;
+  }
+  
+  
+  .calendar {
+    grid-area: calendar;
+    display: grid;
+    grid-auto-flow: column;
+    gap: 2px;
+    place-content: center;
+    grid-template-columns: repeat(55, 1fr);
+    grid-template-rows: repeat(8, 1fr);
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 3px;
+    background: hsl(250deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+  }
+  
+  .cell {
+    display: grid;
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 4px;
+    background: hsl(210deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+    aspect-ratio: 1 / 1;
+  }
+  
+  /*  need to make cal_day start on row 2
+   need to make cell start on row 2, col 3
+   */
+   .cal_day {
+    display: grid;
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 4px;
+    background: hsl(210deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+    grid-column: 1 / 3;
+    aspect-ratio: 2 / 1;
+  }
+    
+  
+  
+  .jan {
+    display: grid;
+    grid-column: 3 / 8;
+    grid-row: 1;
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 4px;
+    background: hsl(210deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+  }
+  
+  .feb {
+    display: grid;
+    grid-column: 8 / 13;
+    grid-row: 1;
+    border:
+      2px solid hsl(210deg 8% 50%);
+    border-radius: 4px;
+    background: hsl(210deg 15% 20%);
+    color: white;
+    font-size: 1.3125rem;
+    font-weight: bold;
+  }
