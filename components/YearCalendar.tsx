@@ -39,13 +39,14 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
   var nextMonth = 1
 
-  // This next bit finds the first week column that contains each month
-  // so we can know where to display the month name.
+  // This next bit finds the first week column that contains each next month
+  // so we can know where to display the month name. Will only say the month is
+  // found when the start of the week is within the month.
   {weeks.map((week, index) => {
-    const monthAtEndWeek = getMonth(endOfWeek(week, { weekStartsOn: 1 })) + 1;
+    const monthAtStartWeek = getMonth(startOfWeek(week, { weekStartsOn: 1 })) + 1;
     console.log(index)
     // console.log(monthAtEndWeek)
-    if (monthAtEndWeek == nextMonth) {
+    if (monthAtStartWeek == nextMonth) {
         console.log(monthNames[nextMonth - 1]);
         // console.log("found the month at week index " + index)   
         nextMonth += 1
@@ -78,8 +79,6 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
                 start: startOfWeek(week, { weekStartsOn: 1 }),
                 end: endOfWeek(week, { weekStartsOn: 1 }),
               })
-            //   console.log(endOfWeek(week, { weekStartsOn: 1 }))
-            //   console.log(getMonth(endOfWeek(week, { weekStartsOn: 1 })) + 1);
 
               return (
                 <div key={format(week, "yyyy-MM-dd")} className="grid grid-rows-7 gap-[3px]">
