@@ -58,7 +58,7 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
     <div className="year-calendar">
       <h2 className="text-2xl font-bold mb-4">{year}</h2>
       <div className="flex flex-col">
-        <div className="flex ml-9">
+        <div className="flex ml-8 mb-1">
           {monthNames.map((month, index) => (
             <div key={month} className="flex-1 text-xs text-gray-400">
               {month}
@@ -66,13 +66,18 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
           ))}
         </div>
         <div className="flex">
-          <div className="flex flex-col mr-2 text-xs text-gray-400 items-end gap-[2px]">
-            {allDayNames.map((day) => (
-              <div key={day} className="h-[10px] leading-[10px]">
-                {displayedDayLabels.includes(day) ? day : ""}
+          <div className="flex flex-col text-xs text-gray-400 items-end gap-[2px]">
+            {allDayNames.map((day, index) => (
+              <div key={day} className="h-[11px] flex items-center">
+                {displayedDayLabels.includes(day) ? (
+                  <span className="pr-2">{day}</span>
+                ) : (
+                  <span className="pr-2">&nbsp;</span>
+                )}
               </div>
             ))}
           </div>
+ 
           <div className="grid grid-flow-col gap-[3px]">
             {weeks.map((week) => {
               const days = eachDayOfInterval({
@@ -81,7 +86,7 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
               })
 
               return (
-                <div key={format(week, "yyyy-MM-dd")} className="grid grid-rows-7 gap-[3px]">
+                <div key={format(week, "yyyy-MM-dd")} className="grid grid-rows-7 gap-[1px]">
                   {days.map((day) => {
                     const dateString = format(day, "yyyy-MM-dd")
                     const activityCount = activityData[dateString] || 0
