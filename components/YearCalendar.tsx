@@ -37,33 +37,37 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
 
   const allDayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"] as const
   const monthNames = ["Jan", "Feb", "Mar", "Apr", "May", "Jun", "Jul", "Aug", "Sep", "Oct", "Nov", "Dec"]
-  var nextMonth = 1
-
-  // This next bit finds the first week column that contains each next month
-  // so we can know where to display the month name. Will only say the month is
-  // found when the start of the week is within the month.
-  {weeks.map((week, index) => {
-    const monthAtStartWeek = getMonth(startOfWeek(week, { weekStartsOn: 1 })) + 1;
-    console.log(index)
-    // console.log(monthAtEndWeek)
-    if (monthAtStartWeek == nextMonth) {
-        console.log(monthNames[nextMonth - 1]);
-        // console.log("found the month at week index " + index)   
-        nextMonth += 1
-    }
-  })}
-
+  // What is the 1-indexed of the next month that hasn't yet been displayed?
+  var nextMonthToBeDisplayedIndex = 1
 
   return (
     <div className="year-calendar">
       <h2 className="text-2xl font-bold mb-4">{year}</h2>
       <div className="flex flex-col">
-        <div className="flex ml-8 mb-1">
-          {monthNames.map((month, index) => (
-            <div key={month} className="flex-1 text-xs text-gray-400">
-              {month}
+        <div className="flex ml-8">
+          <div className="grid grid-flow-col gap-[3px]">
+              {weeks.map((week, weekIndex) => {
+                const monthAtStartWeek = getMonth(startOfWeek(week, { weekStartsOn: 1 })) + 1;
+                var isFirstFullWeekOfMonth = false;
+                if (monthAtStartWeek == nextMonthToBeDisplayedIndex) {
+                  // Display the month for the first time when we are
+                  // at the first full week of the month, aligned with the data
+                  // column for that week.
+                  isFirstFullWeekOfMonth = true;
+                  nextMonthToBeDisplayedIndex += 1
+                }
+                return (
+                  <div key={format(week, "yyyy-MM-dd")} className="w-[10px]">
+                    {isFirstFullWeekOfMonth && (
+                      // This calendar math is painful. Months are 1 indexed, subtract 1 for that,
+                      // and then subtract 1 again because we have already advanced to the next month to be displayed,
+                      // but are only now actually displaying the month for the first full week.
+                      <div className="text-xs text-gray-400 text-center">{monthNames[nextMonthToBeDisplayedIndex-2]}</div>
+                    )}
+                  </div>
+                )
+              })}
             </div>
-          ))}
         </div>
         <div className="flex">
           <div className="flex flex-col text-xs text-gray-400 items-end gap-[2px]">
