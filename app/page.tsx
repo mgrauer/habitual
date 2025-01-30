@@ -94,7 +94,7 @@ export default async function Page() {
         </div>
         
 
-      <div className="mt-4">
+      {/* <div className="mt-4">
         <h3 className="text-lg font-semibold mb-2">Activity Legend</h3>
         <div className="flex items-center space-x-4">
           <div className="flex items-center">
@@ -118,7 +118,7 @@ export default async function Page() {
             <span>15+ activities</span>
           </div>
         </div>
-      </div>
+      </div> */}
       </main>
     </div>
   )
