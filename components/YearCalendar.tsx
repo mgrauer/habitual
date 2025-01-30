@@ -22,8 +22,10 @@ interface YearCalendarProps {
   displayedDayLabels: ("Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun")[]
 }
 
-const getColorForActivity = (count: number): string => {
-   if (count === 0) return "bg-zinc-500"
+const getColorForActivity = (count: number, date: Date, year: number): string => {
+  const isCurrentYear = date.getFullYear() === year
+  if (!isCurrentYear) return "bg-zinc-200"
+  if (count === 0) return "bg-zinc-500"
    else return "bg-green-500"
 }
 
@@ -99,7 +101,7 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, habit, activit
                     return (
                       <div
                         key={dateString}
-                        className={`day-cell w-[10px] h-[10px] rounded-sm ${getColorForActivity(activityCount)}`}
+                        className={`day-cell w-[10px] h-[10px] rounded-sm ${getColorForActivity(activityCount, day, year)}`}
                         title={`${format(day, "MMMM d, yyyy")}: ${activityCount} activities`}
                       />
                     )
