@@ -11,7 +11,7 @@ type HabitData = {
 }
 
 export default async function Page() {
-  const habits = ["writing", "coding", "yoga"]
+  const habits = ["write", "code", "yoga"]
   const habitData: Record<string, HabitData[]> = {}
 
   // Create some mock data for each habit
