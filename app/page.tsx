@@ -92,13 +92,7 @@ export default async function Page() {
             </div>
           </div>
         </div>
-        <h1 className="text-3xl font-bold mb-6">GitHub-style Year Calendar</h1>
-      <YearCalendar
-        year={currentYear}
-        habit={"yoga"}
-        activityData={generateMockActivityData()}
-        displayedDayLabels={["Mon","Wed", "Fri"]}
-      />
+        
 
       <div className="mt-4">
         <h3 className="text-lg font-semibold mb-2">Activity Legend</h3>
