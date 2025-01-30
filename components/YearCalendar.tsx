@@ -17,6 +17,7 @@ interface ActivityData {
 
 interface YearCalendarProps {
   year: number
+  habit: string
   activityData: ActivityData
   displayedDayLabels: ("Mon" | "Tue" | "Wed" | "Thu" | "Fri" | "Sat" | "Sun")[]
 }
@@ -26,7 +27,7 @@ const getColorForActivity = (count: number): string => {
    else return "bg-green-500"
 }
 
-export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, displayedDayLabels }) => {
+export const YearCalendar: React.FC<YearCalendarProps> = ({ year, habit, activityData, displayedDayLabels }) => {
   const startDate = startOfYear(new Date(year, 0, 1))
   const endDate = endOfYear(startDate)
 
@@ -41,8 +42,9 @@ export const YearCalendar: React.FC<YearCalendarProps> = ({ year, activityData, 
   var nextMonthToBeDisplayedIndex = 1
 
   return (
-    <div className="year-calendar">
-      <h2 className="text-2xl font-bold mb-4">{year}</h2>
+    <div className="bg-white shadow rounded-lg p-6">
+      <h2 className="text-xl font-semibold text-gray-900 mb-4 capitalize">{habit}</h2>
+        
       <div className="flex flex-col">
         <div className="flex ml-8">
           <div className="grid grid-flow-col gap-[3px]">

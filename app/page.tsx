@@ -81,14 +81,21 @@ export default async function Page() {
           <div className="px-4 py-6 sm:px-0">
             <div className="space-y-6">
               {Object.entries(habitData).map(([habit, data]) => (
-                <HabitTracker key={habit} habit={habit} data={data} />
+                <YearCalendar key={habit}
+                year={currentYear}
+                habit={habit}
+                activityData={generateMockActivityData()}
+                displayedDayLabels={["Mon","Wed", "Fri"]}
+              />
               ))}
+              
             </div>
           </div>
         </div>
         <h1 className="text-3xl font-bold mb-6">GitHub-style Year Calendar</h1>
       <YearCalendar
         year={currentYear}
+        habit={"yoga"}
         activityData={generateMockActivityData()}
         displayedDayLabels={["Mon","Wed", "Fri"]}
       />
